@@ -1,3 +1,5 @@
+alert("sample");
+
 window.onload = (event) => {
     if(!window.jQuery){
         console.log("BCloud : Error Requirements\n\njQuery is not installed. Please install first with a minimum version of 3.6");
@@ -7,4 +9,5 @@ window.onload = (event) => {
 };
 
 if(window.jQuery){
+    alert("sample");
 }

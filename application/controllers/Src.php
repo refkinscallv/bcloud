@@ -23,7 +23,7 @@
             header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
             header("Access-Control-Allow-Credentials: true");
             header("Content-Type: text/javascript");
-            
+
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
                     $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
@@ -36,17 +36,17 @@
                     } else {
                         http_response_code(403);
                         $status = false;
-                        $source = "alert('Origin of request is unregistered')";
+                        $source = "alert('Origin of request is unregistered');";
                     }
                 } else {
                     http_response_code(403);
                     $status = false;
-                    $source = "alert('Forbidden Access')";
+                    $source = "alert('Forbidden Access');";
                 }
             } else {
                 http_response_code(403);
                 $status = false;
-                $source = "alert('Origin of request is unknown')";
+                $source = "alert('Origin of request is unknown');";
             }
             echo $source;
             exit;
