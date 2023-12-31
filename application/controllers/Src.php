@@ -9,6 +9,7 @@
             header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
             header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
             header("Access-Control-Allow-Credentials: true");
+            header("Content-Type: text/javascript");
 
             $this->load->model([
                 "Src_model" => "src"
@@ -47,10 +48,8 @@
                 $status = false;
                 $source = "alert(Origin of request is unknown)";
             }
-
-            header("Content-Type: text/javascript");
             echo $source;
-            exit; // Exit to prevent further code execution
+            exit;
         }
 
     }
