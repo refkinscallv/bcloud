@@ -12,7 +12,7 @@
         }
 
         public function halo(){
-            echo $this->base_url;
+            echo base_url();
         }
 
         public function http_code_response($code){}
