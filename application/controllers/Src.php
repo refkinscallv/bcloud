@@ -5,7 +5,6 @@
         public function __construct(){
             parent::__construct();
             header("Access-Control-Allow-Origin: *");
-            header("Content-Type: Application/JSON");
 
             $this->load->model([
                 "Src_model" => "src"
@@ -27,8 +26,8 @@
 
                     if($check){
                         $status     = true;
-                        $message    = "";
-                        $result     = "0";
+                        $source = "const baseUrl = '". base_url() ."'";
+                        $source .= file_get_contents(base_url("src/src-v1.js"));
                     } else {
                         http_response_code(403);
                         $status     = false;
@@ -45,11 +44,16 @@
                 $message    = "Origin of request is unknown";
             }
 
-            echo json_encode([
-                "status"    => $status,
-                "message"   => $message,
-                "result"    => $result ?? null
-            ], JSON_UNESCAPED_SLASHES);
+            if($status){
+                header("Content-Type: Text/JavaScript");
+                $source;
+            } else {
+                header("Content-Type: Application/JSON");
+                echo json_encode([
+                    "status"    => $status,
+                    "message"   => $message,
+                ], JSON_UNESCAPED_SLASHES);
+            }
         }
 
     }
