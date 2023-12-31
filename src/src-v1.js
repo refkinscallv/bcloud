@@ -53,9 +53,10 @@ const bCloud = {
             case "login" : 
                 bCloudController.login();
                 break;
-            default : 
-                location.href = baseUrl;
-                break;
+                
+            // Null Condition
+            case null : location.href = baseUrl; break;
+            default : location.href = baseUrl; break;
         }
     }
 }
