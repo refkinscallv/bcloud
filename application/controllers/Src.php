@@ -29,7 +29,8 @@
 
                     if($check){
                         $status = true;
-                        $source = "const baseUrl = '". base_url() ."';";
+                        $source = "const bcloudUrl  = '". base_url() ."';";
+                        $source = "const baseUrl    = 'window.location.href';";
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/src-v1.js");
                     } else {
                         http_response_code(403);

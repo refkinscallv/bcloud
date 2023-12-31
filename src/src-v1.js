@@ -10,21 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 $(document).ready(() => {
-    bcloudRenderElement();
-    bCloudSetup();
+    bCloud.renderElement();
+    bCloud.setup();
 });
 
-function bcloudRenderElement(){
-    $("body").append(`<div class="bcloud-panel"></div>`);
-    $(".bcloud-panel").hide();
-}
+const bCloud = {
+    renderElement : () => {
+        $("body").append(`<div class="bcloud-panel"></div>`);
+        $(".bcloud-panel").hide();
+    },
 
-function bCloudSetup(){
-    const bCloudQuery       = new URLSearchParams(window.location.search);
-    const bCloudQueryPanel  = bCloudQuery.get('bcloud');
+    setup : () => {
+        const bCloudQuery       = new URLSearchParams(window.location.search);
+        const bCloudQueryPanel  = bCloudQuery.get('bcloud');
 
-    if(bCloudQueryPanel != null){
-        $(".bcloud-on-panel").hide();
-        $(".bcloud-panel").show();
+        if(bCloudQueryPanel != null){
+            $(".bcloud-on-panel").hide();
+            $(".bcloud-panel").show();
+        }
     }
 }
