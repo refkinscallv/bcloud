@@ -4,7 +4,7 @@
 
         public function __construct(){
             parent::__construct();
-            
+
             header("Access-Control-Allow-Origin: *");
             header("Content-Type: text/javascript");
 
@@ -30,7 +30,7 @@
                     if($check){
                         $status = true;
                         $source = "const baseUrl = '". base_url() ."'";
-                        $source .= file_get_contents(base_url("src/src-v1.js"));
+                        $source .= file_get_contents("src/src-v1.js");
                     } else {
                         http_response_code(403);
                         $status = false;
