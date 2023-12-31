@@ -30,7 +30,6 @@
                     if($check){
                         $status = true;
                         $source = "const bcloudUrl  = '". base_url() ."';";
-                        $source = "const baseUrl    = window.location.origin;";
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/src-v1.js");
                     } else {
                         http_response_code(403);

@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
+ * Global scope
+ */
+const baseUrl   = window.location.protocol + "//" + window.location.host;
+
+/**
  * Defer & Declared
  */
 $(document).ready(() => {
@@ -45,6 +50,10 @@ const bCloud = {
 
     route : (path) => {
         if(path.get("bcloud")){
+            if(path.get("loc") == null){
+                location.href = baseUrl + "/?bcloud&loc=home";
+            }
+
             switch(path.get("loc")){
                 case "home"     : bCloudController.home(); break;
                 case "login"    : bCloudController.login(); break;
