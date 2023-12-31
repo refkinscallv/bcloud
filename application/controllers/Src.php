@@ -4,6 +4,12 @@
 
         public function __construct(){
             parent::__construct();
+
+            header("Access-Control-Allow-Origin: *");
+            header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+            header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+            header("Access-Control-Allow-Credentials: true");
+
             $this->load->model([
                 "Src_model" => "src"
             ]);
@@ -17,7 +23,6 @@
          * Versioning
          */
         public function v1($token = false){
-            header("Access-Control-Allow-Origin: *");
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
                     $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
