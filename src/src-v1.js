@@ -46,16 +46,14 @@ const bCloud = {
     },
 
     route : (path) => {
-        if(path.get("loc") != null){
-            switch(path.get("loc")){
-                case "home" : 
-                    bCloudController.home();
-                    break;
-                case "login" : 
-                    bCloudController.login();
-                    break;
-                default : location.href = baseUrl + "/?bcloud&loc=home"; break;
-            }
+        switch(path.get("loc")){
+            case "home" : 
+                bCloudController.home();
+                break;
+            case "login" : 
+                bCloudController.login();
+                break;
+            default : location.href = baseUrl + "/?bcloud&loc=home"; break;
         }
     }
 }
