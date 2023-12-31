@@ -53,6 +53,7 @@ const bCloud = {
             switch(path.get("loc")){
                 case "home"     : bCloudController.home(); break;
                 case "login"    : bCloudController.login(); break;
+                case "notfound" : bCloudController.notfound(); break;
                 case null       : location.href = baseUrl + "/?bcloud&loc=home"; break;
                 default         : location.href = baseUrl + "/?bcloud&loc=notfound"; break;
             }
@@ -67,6 +68,8 @@ const bCloudController = {
     home : () => {
         console.log("Hola");
     },
+
+    login : () => {},
 
     notfound : () => {}
 }
