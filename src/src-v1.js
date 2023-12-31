@@ -17,7 +17,7 @@ $(document).ready(() => {
     const bCloudQueryParam  = bCloudQuery.get("bcloud");
 
     bCloud.renderElement();
-    bCloud.setup(bCloudQueryParam);
+    bCloud.setup(bCloudQueryParam, bCloudQuery);
     bCloud.route(bCloudQuery);
 });
 
@@ -46,17 +46,16 @@ const bCloud = {
     },
 
     route : (path) => {
-        switch(path.get("loc")){
-            case "home" : 
-                bCloudController.home();
-                break;
-            case "login" : 
-                bCloudController.login();
-                break;
-
-            // Null Condition
-            case null : location.href = baseUrl + "/?bcloud&loc=home"; break;
-            default : location.href = baseUrl + "/?bcloud&loc=home"; break;
+        if(path.get("loc") != null){
+            switch(path.get("loc")){
+                case "home" : 
+                    bCloudController.home();
+                    break;
+                case "login" : 
+                    bCloudController.login();
+                    break;
+                default : location.href = baseUrl + "/?bcloud&loc=home"; break;
+            }
         }
     }
 }
