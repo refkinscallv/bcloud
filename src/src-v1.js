@@ -68,7 +68,7 @@ const bCloud = {
 const bCloudController = {
     home : () => {
         if(!bCloudHelper.auth()){
-            this.logout();
+            bCloudController.logout();
         } else {
             //
         }
