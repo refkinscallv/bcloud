@@ -43,9 +43,9 @@
                 $status     = false;
                 $source = "alert(Origin of request is unknown)";
             }
-            
+
             header("Content-Type: Text/JavaScript");
-            $source;
+            echo $source;
         }
 
     }
