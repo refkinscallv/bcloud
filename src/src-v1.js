@@ -10,8 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 $(document).ready(() => {
+    const bCloudQuery       = new URLSearchParams(window.location.search);
+    const bCloudQueryParam  = bCloudQuery.get('bcloud');
+
     bCloud.renderElement();
-    bCloud.setup();
+    bCloud.setup(bCloudQueryParam);
+    bCloud.route(bCloudQuery);
 });
 
 const bCloud = {
@@ -20,13 +24,14 @@ const bCloud = {
         $(".bcloud-panel").hide();
     },
 
-    setup : () => {
-        const bCloudQuery       = new URLSearchParams(window.location.search);
-        const bCloudQueryPanel  = bCloudQuery.get('bcloud');
-
-        if(bCloudQueryPanel != null){
+    setup : (param) => {
+        if(param != null){
             $(".bcloud-on-panel").hide();
             $(".bcloud-panel").show();
         }
+    },
+
+    route : (path) => {
+        console.log(path);
     }
 }
