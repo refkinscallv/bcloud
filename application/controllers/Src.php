@@ -31,22 +31,23 @@
 
                     if($check){
                         $status = true;
-                        $source = "const baseUrl = '". base_url() ."'";
-                        $source .= file_get_contents(base_url("src/src-v1.js"));
+                        // $source = "const baseUrl = '". base_url() ."'";
+                        // $source .= file_get_contents(base_url("src/src-v1.js"));
+                        $source = "alert(Origin of request is unregistered);";
                     } else {
                         http_response_code(403);
                         $status = false;
-                        $source = "alert(Origin of request is unregistered)";
+                        $source = "alert(Origin of request is unregistered);";
                     }
                 } else {
                     http_response_code(403);
                     $status = false;
-                    $source = "alert(Forbidden Access)";
+                    $source = "alert(Forbidden Access);";
                 }
             } else {
                 http_response_code(403);
                 $status = false;
-                $source = "alert(Origin of request is unknown)";
+                $source = "alert(Origin of request is unknown);";
             }
             echo $source;
             exit;
