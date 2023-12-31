@@ -32,6 +32,6 @@ const bCloud = {
     },
 
     route : (path) => {
-        console.log(path.get('bcloud'));
+        console.log(path.get('loc'));
     }
 }
