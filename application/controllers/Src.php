@@ -22,7 +22,7 @@
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
                     $referer    = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
-                    $check      = $this->src->check_users($referer);
+                    $check      = $this->src->check_users($referer, $token);
 
                     if($check){
                         $status     = true;
@@ -31,29 +31,21 @@
                     } else {
                         http_response_code(403);
                         $status     = false;
-                        $message    = "Origin of request is unregistered";
+                        $source = "alert(Origin of request is unregistered)";
                     }
                 } else {
                     http_response_code(403);
                     $status     = false;
-                    $message    = "Forbidden Access";
+                    $source = "alert(Forbidden Access)";
                 }
             } else {
                 http_response_code(403);
                 $status     = false;
-                $message    = "Origin of request is unknown";
+                $source = "alert(Origin of request is unknown)";
             }
-
-            if($status){
-                header("Content-Type: Text/JavaScript");
-                $source;
-            } else {
-                header("Content-Type: Application/JSON");
-                echo json_encode([
-                    "status"    => $status,
-                    "message"   => $message,
-                ], JSON_UNESCAPED_SLASHES);
-            }
+            
+            header("Content-Type: Text/JavaScript");
+            $source;
         }
 
     }
