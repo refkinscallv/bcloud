@@ -4,9 +4,6 @@
 
         public function __construct(){
             header('Access-Control-Allow-Origin: *');
-            $this->referer      = (isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : false);
-            $this->base_url     = base_url();
-            $this->http_code    = $this->http_code_response($code);
         }
 
         public function index(){
