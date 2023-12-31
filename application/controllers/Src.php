@@ -13,6 +13,10 @@
             show_404();
         }
 
+        public function halo(){
+            echo "halo";
+        }
+
         public function http_code_response($code){}
 
         /**
