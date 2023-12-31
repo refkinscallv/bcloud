@@ -4,6 +4,7 @@
 
         public function __construct(){
             header('Access-Control-Allow-Origin: *');
+            $this->base_url = base_url();
         }
 
         public function index(){
@@ -11,7 +12,7 @@
         }
 
         public function halo(){
-            echo "halo";
+            echo $this->base_url;
         }
 
         public function http_code_response($code){}
