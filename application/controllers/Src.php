@@ -30,7 +30,7 @@
                     if($check){
                         $status = true;
                         $source = "const baseUrl = '". base_url() ."';";
-                        $source .= file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/src/src-v1.js");
+                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/src-v1.js");
                     } else {
                         http_response_code(403);
                         $status = false;
