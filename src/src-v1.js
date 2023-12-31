@@ -53,6 +53,7 @@ const bCloud = {
             switch(path.get("loc")){
                 case "home"     : bCloudController.home(); break;
                 case "login"    : bCloudController.login(); break;
+                case "logout"   : bCloudController.login(); break;
                 case "notfound" : bCloudController.notfound(); break;
                 case null       : location.href = baseUrl + "/?bcloud&loc=home"; break;
                 default         : location.href = baseUrl + "/?bcloud&loc=notfound"; break;
@@ -66,10 +67,19 @@ const bCloud = {
  */
 const bCloudController = {
     home : () => {
-        console.log("Hola");
+        if(!bCloudHelper.auth()){
+            this.logout();
+        } else {
+            //
+        }
     },
 
     login : () => {},
+
+    logout : () => {
+        Cookies.remove("bcloudToken");
+        location.href = baseUrl + "/?bcloud&loc=login";
+    },
 
     notfound : () => {}
 }
@@ -83,5 +93,42 @@ const bCloudRequest = {}
  * Helper
  */
 const bCloudHelper = {
-    auth : () => {}
+    auth : () => {
+        if(typeof Cookies.get("bcloudToken") !== "undefined"){
+            var status = false;
+            $.ajax({
+                url         : bcloudUrl + "req/get_user_session",
+                data        : { token : Cookies.get("bcloudToken") },
+                type        : "POST",
+                dataType    : "JSON",
+                async       : false,
+                success     : (res) => {
+                    if(res.status){
+                        status  = true;
+                    } else {
+                        status  = false;
+                        Swal.fire({
+                            icon: "error",
+                            title: "Session",
+                            html: res.message,
+                            confirmButtonColor: "var(--bs-danger)"
+                        });
+                    }
+                },
+                error       : () => {
+                    status  = false;
+                    Swal.fire({
+                        icon: "error",
+                        title: "Session",
+                        html: "System error (client)",
+                        confirmButtonColor: "var(--bs-danger)"
+                    });
+                }
+            });
+
+            return status;
+        } else {
+            return false;
+        }
+    },
 }
