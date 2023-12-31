@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         jQuerySRC.src           = "https://code.jquery.com/jquery-3.7.1.min.js";
         jQuerySRC.integrity     = "sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=";
         jQuerySRC.crossOrigin   = "anonymous";
-        var bCloudSRC           = document.querySelector('script[data-bcloud]');
+        var bCloudSRC           = document.querySelector('[data-bcloud]');
         bCloudSRC.prepend(jQuerySRC);
     }
 
