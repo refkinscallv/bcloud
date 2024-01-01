@@ -89,7 +89,26 @@ const bcController = {
  * Request
  */
 const bcRequest = {
-    getUserSession : () => {}
+    getUserSession : (token) => {
+        let authStatus  = false;
+        $.ajax({
+            url         : bcURL + "request/get_user_session/"+ token,
+            type        : "POST",
+            dataType    : "JSON",
+            async       : false,
+            success     : (res) => {
+                if(res.status){
+                    authStatus  = true;
+                } else {
+                    authStatus  = false;
+                }
+            },
+            error       : () => {
+                authStatus  = false;
+            }
+        });
+        return authStatus;
+    }
 }
 
 /**
@@ -97,26 +116,8 @@ const bcRequest = {
  */
 const bcHelper = {
     auth : () => {
-        if(typeof Cookies.get(cookieToken) !== "undefined"){
-            let authStatus  = false;
-
-            $.ajax({
-                url         : bcURL + "request/get_user_session/"+ Cookies.get(cookieToken),
-                type        : "POST",
-                dataType    : "JSON",
-                success     : (res) => {
-                    if(res.status){
-                        authStatus  = true;
-                    } else {
-                        authStatus  = false;
-                    }
-                },
-                error       : () => {
-                    authStatus  = false;
-                }
-            });
-            
-            return authStatus;
+        if(typeof Cookies.get(cookieToken) !== "undefined"){            
+            return bcRequest.getUserSession(Cookies.get(cookieToken));
         } else {
             return false;
         }
