@@ -68,7 +68,7 @@ const bCloud = {
  */
 const bcController = {
     home : () => {
-        if(bcHelper.auth() == false){
+        if(!bcHelper.auth()){
             bcController.logout();
         } else {
             alert("Halo "+ Cookies.get(cookieToken));
