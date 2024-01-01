@@ -18,18 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
 /**
  * Global scope
  */
-const baseUrl   = window.location.protocol + "//" + window.location.host;
+const baseUrl       = window.location.protocol + "//" + window.location.host;
+const cookieToken   = "bcloudToken";
 
 /**
  * Defer & Declared
  */
 $(document).ready(() => {
-    const bCloudQuery       = new URLSearchParams(window.location.search);
-    const bCloudQueryParam  = bCloudQuery.get("bcloud");
+    const bcCurrentQuery    = new URLSearchParams(window.location.search);
+    const bcGetQuery        = bcCurrentQuery.get("bcloud");
 
     bCloud.renderElement();
-    bCloud.setup(bCloudQueryParam, bCloudQuery);
-    bCloud.route(bCloudQuery);
+    bCloud.setup(bcGetQuery, bcCurrentQuery);
+    bCloud.route(bcCurrentQuery);
 });
 
 /**
@@ -51,10 +52,10 @@ const bCloud = {
     route : (path) => {
         if(path.get("bcloud") != null){
             switch(path.get("loc")){
-                case "home"     : bCloudController.home(); break;
-                case "login"    : bCloudController.login(); break;
-                case "logout"   : bCloudController.login(); break;
-                case "notfound" : bCloudController.notfound(); break;
+                case "home"     : bcController.home(); break;
+                case "login"    : bcController.login(); break;
+                case "logout"   : bcController.login(); break;
+                case "notfound" : bcController.notfound(); break;
                 case null       : location.href = baseUrl + "/?bcloud&loc=home"; break;
                 default         : location.href = baseUrl + "/?bcloud&loc=notfound"; break;
             }
@@ -65,19 +66,19 @@ const bCloud = {
 /**
  * Controller
  */
-const bCloudController = {
+const bcController = {
     home : () => {
-        if(!bCloudHelper.auth()){
-            bCloudController.logout();
+        if(!bcHelper.auth()){
+            bcController.logout();
         } else {
-            //
+            alert("Halo "+ Cookies.get(cookieToken));
         }
     },
 
     login : () => {},
 
     logout : () => {
-        Cookies.remove("bcloudToken");
+        Cookies.remove(cookieToken);
         location.href = baseUrl + "/?bcloud&loc=login";
     },
 
@@ -87,46 +88,35 @@ const bCloudController = {
 /**
  * Request
  */
-const bCloudRequest = {}
+const bcRequest = {
+    getUserSession : () => {}
+}
 
 /**
  * Helper
  */
-const bCloudHelper = {
+const bcHelper = {
     auth : () => {
-        if(typeof Cookies.get("bcloudToken") !== "undefined"){
-            var status = false;
+        if(typeof Cookies.get(cookieToken) !== "undefined"){
+            let authStatus  = false;
+
             $.ajax({
-                url         : bcloudUrl + "req/get_user_session",
-                data        : { token : Cookies.get("bcloudToken") },
+                url         : bcURL + "request/get_user_session/"+ Cookies.get(cookieToken),
                 type        : "POST",
                 dataType    : "JSON",
-                async       : false,
                 success     : (res) => {
                     if(res.status){
-                        status  = true;
+                        authStatus  = true;
                     } else {
-                        status  = false;
-                        Swal.fire({
-                            icon: "error",
-                            title: "Session",
-                            html: res.message,
-                            confirmButtonColor: "var(--bs-danger)"
-                        });
+                        authStatus  = false;
                     }
                 },
                 error       : () => {
-                    status  = false;
-                    Swal.fire({
-                        icon: "error",
-                        title: "Session",
-                        html: "System error (client)",
-                        confirmButtonColor: "var(--bs-danger)"
-                    });
+                    authStatus  = false;
                 }
             });
-
-            return status;
+            
+            return authStatus;
         } else {
             return false;
         }

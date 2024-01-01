@@ -24,24 +24,19 @@
         /**
          * @method GET
          */
-        public function get_user_session(){
-            $token  = $this->input->post("token");
-
-            $get_user   = $this->db->get_where("users", [
+        public function get_user_session($token){
+            $get_user_session   = $this->db->get_where("users", [
                 "token" => $token
             ]);
 
-            if($get_user->num_rows() > 0){
-                $status     = true;
-                $message    = "";
+            if($get_user_session->num_rows() > 0){
+                $status = true;
             } else {
-                $status     = false;
-                $message    = "Account not registered";
+                $status = false;
             }
 
             echo json_encode([
-                "status"    => $status,
-                "message"   => $message
+                "status"    => $status
             ], JSON_UNESCAPED_SLASHES);
         }
 
