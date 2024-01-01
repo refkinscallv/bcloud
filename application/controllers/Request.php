@@ -13,7 +13,7 @@
                     "domain"    => $referer
                 ]);
 
-                if($check->num_rows() == 0 || $referer != $_SERVER["HTTP_HOST"]){
+                if($check->num_rows() == 0){
                     show_404();
                 }
             } else {

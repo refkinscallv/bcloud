@@ -79,7 +79,7 @@ const bcController = {
 
     logout : () => {
         Cookies.remove(cookieToken);
-        // location.href = baseUrl + "/?bcloud&loc=login";
+        location.href = baseUrl + "/?bcloud&loc=login";
     },
 
     notfound : () => {}
@@ -98,7 +98,7 @@ const bcRequest = {
 const bcHelper = {
     auth : () => {
         if(typeof Cookies.get(cookieToken) !== "undefined"){
-            let authStatus  = '';
+            let authStatus  = false;
 
             $.ajax({
                 url         : bcURL + "request/get_user_session/"+ Cookies.get(cookieToken),
