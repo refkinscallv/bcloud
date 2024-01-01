@@ -68,7 +68,7 @@ const bCloud = {
  */
 const bcController = {
     home : () => {
-        if(!bcHelper.auth()){
+        if(bcHelper.auth() == false){
             bcController.logout();
         } else {
             alert("Halo "+ Cookies.get(cookieToken));
@@ -79,7 +79,7 @@ const bcController = {
 
     logout : () => {
         Cookies.remove(cookieToken);
-        location.href = baseUrl + "/?bcloud&loc=login";
+        // location.href = baseUrl + "/?bcloud&loc=login";
     },
 
     notfound : () => {}
@@ -98,7 +98,7 @@ const bcRequest = {
 const bcHelper = {
     auth : () => {
         if(typeof Cookies.get(cookieToken) !== "undefined"){
-            let authStatus  = false;
+            let authStatus  = '';
 
             $.ajax({
                 url         : bcURL + "request/get_user_session/"+ Cookies.get(cookieToken),
