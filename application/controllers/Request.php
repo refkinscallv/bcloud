@@ -6,19 +6,6 @@
             parent::__construct();
 
             header("Access-Control-Allow-Origin: *");
-
-            if(isset($_SERVER["HTTP_REFERER"])){
-                $referer    = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
-                $check      = $this->db->get_where("users", [
-                    "domain"    => $referer
-                ]);
-
-                if($check->num_rows() == 0){
-                    show_404();
-                }
-            } else {
-                show_404();
-            }
         }
 
         /**
