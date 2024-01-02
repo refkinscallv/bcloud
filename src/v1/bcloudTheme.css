@@ -1,0 +1,20 @@
+#bcLogin #bcLoginFloating {
+    width: 30%;
+    padding: 20px
+}
+
+#bcLogin #bcLoginFloating #bcLoginHeader img {
+    width: 50%
+}
+
+@media screen and (max-width: 720px){
+
+    #bcLogin #bcLoginFloating {
+        width: 100%
+    }
+
+    #bcLogin #bcLoginFloating #bcLoginHeader img {
+        width: 80%;
+    }
+
+}

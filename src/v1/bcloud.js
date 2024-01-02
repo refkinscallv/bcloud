@@ -38,7 +38,7 @@ $(document).ready(() => {
  */
 const bCloud = {
     renderElement : () => {
-        $("body").prepend(`<div class="bcloud-panel"></div>`);
+        $("body").prepend(`<div class="bcloud-panel bg-light"></div>`);
         $(".bcloud-panel").hide();
     },
 
@@ -61,6 +61,13 @@ const bCloud = {
             }
         }
     }
+}
+
+/**
+ * Events
+ */
+const bcEvent   = {
+
 }
 
 /**
