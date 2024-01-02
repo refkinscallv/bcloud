@@ -60,6 +60,10 @@ const bCloud = {
                 default         : location.href = baseUrl + "/?bcloud&loc=notfound"; break;
             }
         }
+    },
+
+    view : (result) => {
+        $(`.bcloud-panel`).html(result);
     }
 }
 
@@ -85,7 +89,7 @@ const bcController = {
         if(bcHelper.auth()){
             location.href = baseUrl + "/?bcloud&loc=home";
         } else {
-
+            bCloud.view(bcFront.login);
         }
     },
 
