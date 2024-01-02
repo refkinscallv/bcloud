@@ -23,31 +23,31 @@
 
             header("Content-Type: text/javascript");
 
-            if(isset($_SERVER["HTTP_REFERER"])){
-                if($token){
-                    $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
-                    $check = $this->src->check_users($referer, $token);
+            // if(isset($_SERVER["HTTP_REFERER"])){
+            //     if($token){
+            //         $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
+            //         $check = $this->src->check_users($referer, $token);
 
-                    if($check){
-                        $status = true;
+            //         if($check){
+            //             $status = true;
                         $source = "const bcURL  = '". base_url() ."';";
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.js");
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud-front.js");
-                    } else {
-                        http_response_code(403);
-                        $status = false;
-                        $source = "alert('Origin of request is unregistered');";
-                    }
-                } else {
-                    http_response_code(403);
-                    $status = false;
-                    $source = "alert('Forbidden Access');";
-                }
-            } else {
-                http_response_code(403);
-                $status = false;
-                $source = "alert('Origin of request is unknown');";
-            }
+            //         } else {
+            //             http_response_code(403);
+            //             $status = false;
+            //             $source = "alert('Origin of request is unregistered');";
+            //         }
+            //     } else {
+            //         http_response_code(403);
+            //         $status = false;
+            //         $source = "alert('Forbidden Access');";
+            //     }
+            // } else {
+            //     http_response_code(403);
+            //     $status = false;
+            //     $source = "alert('Origin of request is unknown');";
+            // }
 
             echo $source;
         }
@@ -56,29 +56,29 @@
             
             header("Content-Type: text/css");
 
-            if(isset($_SERVER["HTTP_REFERER"])){
-                if($token){
-                    $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
-                    $check = $this->src->check_users($referer, $token);
+            // if(isset($_SERVER["HTTP_REFERER"])){
+            //     if($token){
+            //         $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
+            //         $check = $this->src->check_users($referer, $token);
 
-                    if($check){
-                        $status = true;
+            //         if($check){
+            //             $status = true;
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.css");
-                    } else {
-                        http_response_code(403);
-                        $status = false;
-                        $source = "alert('Origin of request is unregistered');";
-                    }
-                } else {
-                    http_response_code(403);
-                    $status = false;
-                    $source = "alert('Forbidden Access');";
-                }
-            } else {
-                http_response_code(403);
-                $status = false;
-                $source = "alert('Origin of request is unknown');";
-            }
+            //         } else {
+            //             http_response_code(403);
+            //             $status = false;
+            //             $source = "alert('Origin of request is unregistered');";
+            //         }
+            //     } else {
+            //         http_response_code(403);
+            //         $status = false;
+            //         $source = "alert('Forbidden Access');";
+            //     }
+            // } else {
+            //     http_response_code(403);
+            //     $status = false;
+            //     $source = "alert('Origin of request is unknown');";
+            // }
             
             echo $source;
         }

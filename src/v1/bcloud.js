@@ -128,5 +128,5 @@ const bcHelper = {
         } else {
             return false;
         }
-    },
+    }
 }
