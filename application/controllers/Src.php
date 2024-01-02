@@ -29,7 +29,6 @@
                     if($check){
                         $status = true;
                         $source = "const bcURL  = '". base_url() ."';";
-                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.css");
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.js");
                         $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud-front.js");
                     } else {
