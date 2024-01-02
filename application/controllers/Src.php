@@ -19,7 +19,7 @@
         /**
          * Versioning
          */
-        public function js($version = "1", $token = false){
+        public function js($version = "v1", $token = false){
 
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
@@ -29,9 +29,9 @@
                     if($check){
                         $status = true;
                         $source = "const bcURL  = '". base_url() ."';";
-                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/v". $version ."/bcloud.css");
-                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/v". $version ."/bcloud.js");
-                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/v". $version ."/bcloud-front.js");
+                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.css");
+                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.js");
+                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud-front.js");
                     } else {
                         http_response_code(403);
                         $status = false;
@@ -53,7 +53,7 @@
             echo $source;
         }
 
-        public function css($version = "1", $token = false){
+        public function css($version = "v1", $token = false){
 
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
@@ -62,7 +62,7 @@
 
                     if($check){
                         $status = true;
-                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/v". $version ."/bcloud.css");
+                        $source .= file_get_contents("/home/cgaa9149/bcloud/src/". $version ."/bcloud.css");
                     } else {
                         http_response_code(403);
                         $status = false;
