@@ -1,0 +1,144 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+#loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+/* Variable */
+:root {
+    --visible: 0;
+    --hidden: 100%;
+    --animation-duration: .5s;
+}
+
+/* Scroll Bar */
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bs-dark-text-emphasis) var(--bs-white);
+}
+*::-webkit-scrollbar {width: 12px}
+*::-webkit-scrollbar-track {background: var(--bs-white)}
+*::-webkit-scrollbar-thumb {background-color: var(--bs-dark-text-emphasis);border: 3px solid var(--bs-white)}
+
+/* Bootstrap Default Layouting */
+.bcloud-panel .selector-for-some-widget {box-sizing: content-box}
+
+/* Basic Usage */
+.bcloud-panel body, html {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 14px !important;
+    color: var(--bs-gray-900)
+}
+
+.bcloud-panel a {
+    color: var(--bs-primary) !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: .2s
+}
+
+.bcloud-panel a:hover {
+    color: var(--bs-danger);
+    text-decoration: none !important
+}
+
+.bcloud-panel textarea {
+    resize: none !important
+}
+
+.bcloud-panel .full {
+    width: 100%;
+    margin: auto
+}
+
+.bcloud-panel .form-label {
+    font-size: 13px;
+    display: block;
+    position: relative;
+}
+
+.bcloud-panel .form-control, .form-select {
+    resize: none !important
+}
+
+.bcloud-panel .form-control:hover, .form-select:hover, .form-input-check:hover, .form-control:focus, .form-select:focus, .form-input-check:focus {
+    border: 1px solid var(--bs-primary) !important;
+    box-shadow: none !important
+}
+
+.bcloud-panel .table-responsive {
+    max-height: 100vh !important;
+    overflow-x: auto !important
+}
+
+.bcloud-panel .table {
+    width: 100% !important;
+    margin: auto !important
+}
+
+.bcloud-panel .table thead {
+    border-bottom: 1px solid var(--bs-gray-300) !important;
+    font-weight: normal !important;
+    background: var(--bs-gray-900) !important;
+    color: var(--bs-white) !important
+}
+
+.bcloud-panel .table tbody {
+    border-top: 1px solid var(--bs-gray-300) !important
+}
+
+.bcloud-panel .table td {
+    vertical-align: middle !important;
+}
+
+.bcloud-panel .btn:hover, 
+.bcloud-panel .btn:focus, 
+.bcloud-panel .nav-tabs .nav-link, 
+.bcloud-panel .accordion-item, 
+.bcloud-panel .accordion-header, 
+.bcloud-panel .accordion-button, 
+.bcloud-panel .list-group, 
+.bcloud-panel .list-group .list-group-item, 
+.bcloud-panel .collapse, 
+.bcloud-panel .collapse .card-body, 
+.bcloud-panel .modal-header {
+    box-shadow: none !important
+}
+
+.bcloud-panel .dropdown-menu {
+    padding: 5px !important;
+    transition: .2s
+}
+
+/* Datatables */
+.bcloud-panel .dataTables_wrapper .dataTables_length,
+.bcloud-panel .dataTables_wrapper .dataTables_filter {
+    margin-bottom: 20px
+}
+
+/* Media Query */
+@media screen and (max-width: 720px){
+    .bcloud-panel .row [class^="col-"] {
+        margin-bottom: 20px !important
+    }
+
+    .bcloud-panel .row [class^="col-"]:last-child {
+        margin-bottom: 0px !important
+    }
+}
