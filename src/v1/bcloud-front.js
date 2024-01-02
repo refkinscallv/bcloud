@@ -9,7 +9,7 @@ const bcFront   = {
             
                 <div id="bcLoginHeader" class="my-4">
                     <center>
-                        <img src="${bCurl}images/bcloud.png"/>
+                        <img src="${bcURL}images/bcloud.png"/>
                     </center>
                 </div>
 
