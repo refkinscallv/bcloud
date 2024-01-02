@@ -21,6 +21,8 @@
          */
         public function js($version = "v1", $token = false){
 
+            header("Content-Type: text/javascript");
+
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
                     $referer = parse_url($_SERVER["HTTP_REFERER"], PHP_URL_HOST);
@@ -46,13 +48,13 @@
                 $status = false;
                 $source = "alert('Origin of request is unknown');";
             }
-            
-            header("Content-Type: text/javascript");
 
             echo $source;
         }
 
         public function css($version = "v1", $token = false){
+            
+            header("Content-Type: text/css");
 
             if(isset($_SERVER["HTTP_REFERER"])){
                 if($token){
@@ -77,8 +79,6 @@
                 $status = false;
                 $source = "alert('Origin of request is unknown');";
             }
-            
-            header("Content-Type: text/css");
             
             echo $source;
         }
