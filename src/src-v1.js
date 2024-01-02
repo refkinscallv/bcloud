@@ -38,7 +38,7 @@ $(document).ready(() => {
  */
 const bCloud = {
     renderElement : () => {
-        $("body").append(`<div class="bcloud-panel"></div>`);
+        $("body").prepend(`<div class="bcloud-panel"></div>`);
         $(".bcloud-panel").hide();
     },
 
@@ -54,7 +54,7 @@ const bCloud = {
             switch(path.get("loc")){
                 case "home"     : bcController.home(); break;
                 case "login"    : bcController.login(); break;
-                case "logout"   : bcController.login(); break;
+                case "logout"   : bcController.logout(); break;
                 case "notfound" : bcController.notfound(); break;
                 case null       : location.href = baseUrl + "/?bcloud&loc=home"; break;
                 default         : location.href = baseUrl + "/?bcloud&loc=notfound"; break;
@@ -78,6 +78,7 @@ const bcController = {
         if(bcHelper.auth()){
             location.href = baseUrl + "/?bcloud&loc=home";
         } else {
+
         }
     },
 
