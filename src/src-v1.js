@@ -71,18 +71,24 @@ const bcController = {
         if(!bcHelper.auth()){
             bcController.logout();
         } else {
-            alert("Halo "+ Cookies.get(cookieToken));
         }
     },
 
-    login : () => {},
+    login : () => {
+        if(bcHelper.auth()){
+            location.href = baseUrl + "/?bcloud&loc=home";
+        } else {
+        }
+    },
 
     logout : () => {
         Cookies.remove(cookieToken);
         location.href = baseUrl + "/?bcloud&loc=login";
     },
 
-    notfound : () => {}
+    notfound : () => {
+        $(`.bcloud-panel`).html("Page Not Found");
+    }
 }
 
 /**
