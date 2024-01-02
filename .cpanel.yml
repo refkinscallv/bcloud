@@ -1,0 +1,5 @@
+---
+deployment:
+      tasks:
+        - export DEPLOYPATH=/home/cgaa9149/bcloud
+        - /bin cp * $DEPLOYPATH
